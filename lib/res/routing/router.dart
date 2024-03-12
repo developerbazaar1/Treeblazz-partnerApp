@@ -4,6 +4,7 @@ import 'package:tb_patner/features/auth/screen/signup_screen.dart';
 import 'package:tb_patner/features/edit%20profile/screen/edit_profile_screen.dart';
 import 'package:tb_patner/features/faq/screens/faq_screen.dart';
 import 'package:tb_patner/features/home/screens/home_screen.dart';
+import 'package:tb_patner/features/notification/screen/notification_screen.dart';
 import 'package:tb_patner/features/order/screen/cancelled_order_screen.dart';
 import 'package:tb_patner/features/order/screen/delivered_order_screen.dart';
 import 'package:tb_patner/features/order/screen/ready_for_pickup_order_screen.dart';
@@ -63,6 +64,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const CancelledOrderScreen(),
+      );
+    case NotificationScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const NotificationScreen(),
       );
     // case MyAddressScreen.routeName:
     //   return MaterialPageRoute(

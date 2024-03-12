@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:tb_patner/features/home/screens/home_screen.dart';
 import 'package:tb_patner/features/menu/screen/menu_screen.dart';
 import 'package:tb_patner/features/order/screen/order_screen.dart';
+import 'package:tb_patner/features/user%20profile/screens/profile_screen.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
 
 class AppBottomBar extends StatefulWidget {
@@ -30,9 +31,8 @@ class _AppBottomBarState extends State<AppBottomBar> {
     const HomeScreen(),
     const MenuScreen(),
     const OrderScreen(),
-    // const OrdersScreen(),
-    // const CartScreen(),
-    // const ProfileScreen(),
+    const OrderScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

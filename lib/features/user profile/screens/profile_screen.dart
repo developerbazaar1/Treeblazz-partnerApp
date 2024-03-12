@@ -17,23 +17,25 @@ class ProfileScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
 
     List<String> profileOptions = [
-      "Delivery Address",
+      "Order History",
+      "My Finance",
       "Change Password",
-      "Help",
+      "Notification Sound",
       "Terms and Conditions",
-      "Privacy Polices",
+      // "Privacy Polices",
+      "Help",
       "FAQ",
-      "Rate Our Application",
       "Sign Out"
     ];
     List onTapOnList = [
-      () => context.pushNamedRoute("/myAddress"),
-      () => context.pushNamedRoute("/changePassword"),
-      () => context.pushNamedRoute("/support"),
-      () => context.pushNamedRoute("/tandc"),
-      () => context.pushNamedRoute("/privacy"),
-      () => context.pushNamedRoute("/faq"),
       () {},
+      () {},
+      () => context.pushNamedRoute("/changePassword"),
+      () => context.pushNamedRoute("/notification"),
+      () => context.pushNamedRoute("/tandc"),
+      //() => context.pushNamedRoute("/privacy"),
+      () => context.pushNamedRoute("/support"),
+      () => context.pushNamedRoute("/faq"),
       () => Navigator.of(context).pushNamedAndRemoveUntil(
             '/signin',
             (route) => false,
@@ -113,8 +115,8 @@ class ProfileScreen extends StatelessWidget {
                   return BuildProfileCard(
                     heading: profileOptions[index],
                     onTap: onTapOnList[index],
-                    headingColor: index == 8 ? AppColor.redColor : Colors.black,
-                    isArrow: index == 8 ? false : true,
+                    headingColor: index == 7 ? AppColor.redColor : Colors.black,
+                    isArrow: index == 7 ? false : true,
                   );
                 },
               ),
