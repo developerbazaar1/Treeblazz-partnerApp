@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tb_patner/features/products/screens/menu_categories_products_screen.dart';
 import 'package:tb_patner/res/comman/app_buttomBar.dart';
+import 'package:tb_patner/res/comman/app_colors.dart';
 import 'package:tb_patner/res/routing/router.dart';
 
 void main() {
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

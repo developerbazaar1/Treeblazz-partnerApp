@@ -3,6 +3,7 @@ import 'package:tb_patner/res/comman/app_images.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_text_feild.dart';
 
+import '../../../res/comman/app_toast_bar.dart';
 import '../../../res/comman/my_redbutton.dart';
 
 class SupportScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class SupportScreen extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController messageController = TextEditingController();
     return Scaffold(
-      appBar: MyAppBar(text: "Help & Support"),
+      appBar: const MyAppBar(text: "Help & Support"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -35,16 +36,6 @@ class SupportScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              // Align(
-              //   alignment: Alignment.center,
-              //   child: MyTextPoppines(
-              //     text: "Get the Assistance You Need",
-              //     fontSize: width * 0.038,
-              //     fontWeight: FontWeight.w600,
-              //     color: AppColor.black,
-              //   ),
-              // ),
-
               SizedBox(height: height * 0.03),
               MyTextFeild(
                 controller: nameController,
@@ -76,7 +67,10 @@ class SupportScreen extends StatelessWidget {
           height: height * 0.075,
           child: CustomButton(
             text: "Send",
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+              Navigator.of(context).pop();
+              ToastBar.show(context, "Query sent Successfully");
+            },
             vspacing: height * 0.02,
             fontSize: width * 0.05,
           ),

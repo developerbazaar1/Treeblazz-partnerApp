@@ -18,14 +18,13 @@ class HomeScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     List onTapContainer = [
       '/readyForPickupOrder',
-      '/deliveredOrders',
+      //  '/deliveredOrders',
       '/deliveredOrders',
       '/readyForPickupOrder',
       '/deliveredOrders',
       '/deliveredOrders',
       '/cancelledOrder',
     ];
-    final spacing = SizedBox(height: height * 0.035);
     return Scaffold(
       backgroundColor: AppColor.white,
       appBar: PreferredSize(

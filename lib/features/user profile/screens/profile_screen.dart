@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
     ];
     List onTapOnList = [
       () {},
-      () {},
+      () => context.pushNamedRoute("/myFinance"),
       () => context.pushNamedRoute("/changePassword"),
       () => context.pushNamedRoute("/notification"),
       () => context.pushNamedRoute("/tandc"),

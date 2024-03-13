@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:tb_patner/features/order/widget/order_card_widget.dart';
+import 'package:tb_patner/res/comman/appList.dart';
+import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_redbutton.dart';
 
 import '../../../res/comman/app_colors.dart';
+import '../../../res/comman/app_toast_bar.dart';
 import '../../../res/comman/my_text.dart';
-import 'package:flutter/material.dart';
-import 'package:tb_patner/features/order/screen/order_screen.dart';
-import 'package:tb_patner/res/comman/appList.dart';
-import 'package:tb_patner/res/comman/my_appbar.dart';
 
 class OrderDetaileScreen extends StatelessWidget {
+  final bool? isNewOrder;
   static const String routeName = '/orderDetaile';
-  const OrderDetaileScreen({super.key});
+  const OrderDetaileScreen({super.key, this.isNewOrder});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,7 @@ class OrderDetaileScreen extends StatelessWidget {
                       price: order.price,
                       date: order.date,
                       time: order.time,
+                      onTap: () {},
                     );
                   },
                 ),
@@ -52,26 +53,44 @@ class OrderDetaileScreen extends StatelessWidget {
               ),
               SizedBox(height: height * 0.02),
               const OrderDetailsCard(),
-              SizedBox(height: height * 0.035),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomButton(
-                    text: "Cancle",
-                    fontSize: width * 0.048,
-                    hspacing: width * 0.13,
-                    vspacing: height * 0.016,
-                    buttonColor: AppColor.black,
-                    onTap: () {},
-                  ),
-                  CustomButton(
-                    text: "Confrim",
-                    fontSize: width * 0.048,
-                    hspacing: width * 0.13,
-                    vspacing: height * 0.016,
-                    onTap: () {},
-                  )
-                ],
+              Visibility(
+                visible: isNewOrder ?? false,
+                child: SizedBox(height: height * 0.035),
+              ),
+              Visibility(
+                visible: isNewOrder ?? false,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomButton(
+                      text: "Cancle",
+                      fontSize: width * 0.048,
+                      hspacing: width * 0.13,
+                      vspacing: height * 0.016,
+                      buttonColor: AppColor.black,
+                      onTap: () {
+                        ToastBar.show(
+                          context,
+                          "Order Cancelled Successfully",
+                        );
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    CustomButton(
+                      text: "Confrim",
+                      fontSize: width * 0.048,
+                      hspacing: width * 0.13,
+                      vspacing: height * 0.016,
+                      onTap: () {
+                        ToastBar.show(
+                          context,
+                          "Order Confrimed Successfully",
+                        );
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ],
+                ),
               ),
               SizedBox(height: height * 0.035),
             ],

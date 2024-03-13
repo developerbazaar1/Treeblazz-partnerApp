@@ -78,11 +78,11 @@ class AppList {
       title: "New Order Request",
       boxColor: AppColor.lightPink,
     ),
-    DashboardOrder(
-      quantity: 0,
-      title: "Upcoming Request",
-      boxColor: AppColor.hd_lightBlue,
-    ),
+    // DashboardOrder(
+    //   quantity: 0,
+    //   title: "Upcoming Request",
+    //   boxColor: AppColor.hd_lightBlue,P
+    // ),
     DashboardOrder(
       quantity: 10,
       title: "Orders Processing",
@@ -217,4 +217,21 @@ class AppList {
       color: AppColor.hd_cream,
     ),
   ];
+
+  //
+  static List<Finance> financeList = [
+    Finance(title: "Today Earning", earning: "100"),
+    Finance(title: "Weekly Earning", earning: "400"),
+    Finance(title: "Febarury 2024", earning: "1420"),
+    Finance(title: "January 2024", earning: "1320"),
+    Finance(title: "December 2023", earning: "1100"),
+    Finance(title: "November 2023", earning: "1500"),
+  ];
+}
+
+class Finance {
+  final String title;
+  final String earning;
+
+  Finance({required this.title, required this.earning});
 }

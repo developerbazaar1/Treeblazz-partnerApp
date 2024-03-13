@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:tb_patner/res/comman/app_colors.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
 
 class MyTextFeild extends StatelessWidget {
   final TextEditingController controller;
   final String headingText;
   final String hintText;
+  final Color? hintTextColor;
   final Color? fillColor;
   final int? maxLines;
 
   final FocusNode? focusNode;
   final Function(String)? onSubmit;
   final String? Function(String?)? validator;
-  const MyTextFeild(
-      {super.key,
-      required this.controller,
-      required this.headingText,
-      required this.hintText,
-      this.fillColor,
-      this.validator,
-      this.focusNode,
-      this.onSubmit,
-      this.maxLines});
+  const MyTextFeild({
+    super.key,
+    required this.controller,
+    required this.headingText,
+    required this.hintText,
+    this.fillColor,
+    this.validator,
+    this.focusNode,
+    this.onSubmit,
+    this.maxLines,
+    this.hintTextColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +61,7 @@ class MyTextFeild extends StatelessWidget {
             floatingLabelBehavior: FloatingLabelBehavior.never,
             hintText: hintText,
             hintStyle: TextStyle(
+              color: hintTextColor ?? AppColor.black.withOpacity(0.6),
               fontSize: width * 0.038,
               fontWeight: FontWeight.w600,
             ),

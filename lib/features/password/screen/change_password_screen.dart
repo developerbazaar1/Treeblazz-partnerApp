@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/features/auth/widgets/passwordTextFeild.dart';
+import 'package:tb_patner/res/comman/app_toast_bar.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 
 import '../../../res/comman/my_redbutton.dart';
@@ -86,7 +87,10 @@ class ChangePasswordScreen extends StatelessWidget {
           height: height * 0.07,
           child: CustomButton(
             text: "Update",
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+              Navigator.of(context).pop();
+              ToastBar.show(context, "Password Changed Successfully");
+            },
             vspacing: height * 0.02,
             fontSize: width * 0.05,
           ),

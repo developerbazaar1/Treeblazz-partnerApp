@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../res/comman/my_redbutton.dart';
 import '../../../../res/comman/my_text.dart';
 import '../../../res/comman/app_colors.dart';
+import '../../../res/comman/app_toast_bar.dart';
 import '../../../res/comman/my_appbar.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -63,7 +64,10 @@ class NotificationScreen extends StatelessWidget {
           height: height * 0.075,
           child: CustomButton(
             text: "Update",
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+              Navigator.of(context).pop();
+              ToastBar.show(context, "Notification Updated Successfully");
+            },
             vspacing: height * 0.02,
             fontSize: width * 0.048,
           ),
@@ -107,7 +111,7 @@ class _SwtichButtonState extends State<SwtichButton> {
       activeTrackColor: AppColor.redColor,
       inactiveThumbColor: AppColor.white,
       trackOutlineColor: MaterialStateProperty.all(Colors.transparent),
-
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       onChanged: (bool value) {
         setState(() {
           light = value;

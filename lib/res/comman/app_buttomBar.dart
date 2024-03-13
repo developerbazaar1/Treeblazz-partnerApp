@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:tb_patner/features/home/screens/home_screen.dart';
-import 'package:tb_patner/features/menu/screen/menu_screen.dart';
+import 'package:tb_patner/features/products/screens/all_product_screen.dart';
 import 'package:tb_patner/features/order/screen/order_screen.dart';
 import 'package:tb_patner/features/user%20profile/screens/profile_screen.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
@@ -29,7 +29,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const MenuScreen(),
+    const ProductScreen(),
     const OrderScreen(),
     const OrderScreen(),
     const ProfileScreen(),
@@ -83,62 +83,68 @@ class _AppBottomBarState extends State<AppBottomBar> {
           ],
           color: AppColor.white,
         ),
-        child: BottomNavigationBar(
-          elevation: 0.0,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              backgroundColor: AppColor.white,
-              icon: Icon(
-                Iconsax.home_copy,
-                color: _getColor(0),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            elevation: 0.0,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                backgroundColor: AppColor.white,
+                icon: Icon(
+                  Iconsax.home_copy,
+                  color: _getColor(0),
+                ),
+                label: 'Home',
               ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColor.white,
-              icon: Icon(
-                Iconsax.shop_copy,
-                color: _getColor(1),
+              BottomNavigationBarItem(
+                backgroundColor: AppColor.white,
+                icon: Icon(
+                  Iconsax.box_copy,
+                  color: _getColor(1),
+                ),
+                label: 'Products',
               ),
-              label: 'Menu',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColor.white,
-              icon: Icon(
-                Iconsax.receipt_1_copy,
-                color: _getColor(2),
+              BottomNavigationBarItem(
+                backgroundColor: AppColor.white,
+                icon: Icon(
+                  Iconsax.receipt_1_copy,
+                  color: _getColor(2),
+                ),
+                label: 'Order',
               ),
-              label: 'Order',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColor.white,
-              icon: Icon(
-                Iconsax.shopping_cart_copy,
-                color: _getColor(3),
+              BottomNavigationBarItem(
+                backgroundColor: AppColor.white,
+                icon: Icon(
+                  Iconsax.shopping_cart_copy,
+                  color: _getColor(3),
+                ),
+                label: 'Cart',
               ),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColor.white,
-              icon: Icon(
-                Iconsax.user_copy,
-                color: _getColor(4),
+              BottomNavigationBarItem(
+                backgroundColor: AppColor.white,
+                icon: Icon(
+                  Iconsax.user_copy,
+                  color: _getColor(4),
+                ),
+                label: 'Profile',
               ),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          // Ensure labels are always displayed
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          selectedItemColor: Colors.black,
-          selectedFontSize: width * 0.035,
-          selectedIconTheme: IconThemeData(size: width * 0.06),
-          unselectedItemColor: AppColor.greyColor,
-          unselectedFontSize: width * 0.035,
-          unselectedIconTheme: IconThemeData(size: width * 0.065),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            // Ensure labels are always displayed
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+            selectedItemColor: Colors.black,
+            selectedFontSize: width * 0.035,
+            selectedIconTheme: IconThemeData(size: width * 0.06),
+            unselectedItemColor: AppColor.greyColor,
+            unselectedFontSize: width * 0.035,
+            unselectedIconTheme: IconThemeData(size: width * 0.065),
+          ),
         ),
       ),
     );

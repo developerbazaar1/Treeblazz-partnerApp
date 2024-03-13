@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tb_patner/res/comman/app_colors.dart';
+import 'package:tb_patner/res/comman/my_text.dart';
 
 class ToastBar {
   static void show(BuildContext context, String message) {
@@ -15,7 +17,7 @@ class ToastBar {
     overlay.insert(overlayEntry);
 
     // After 2 seconds, remove the toast
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       overlayEntry.remove();
     });
   }
@@ -31,15 +33,16 @@ class ToastWidget extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-        margin: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+        margin: const EdgeInsets.symmetric(horizontal: 16.0),
         decoration: BoxDecoration(
           color: Colors.black87,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Text(
-          message,
-          style: TextStyle(color: Colors.white),
+        child: MyTextPoppines(
+          text: message,
+          color: AppColor.white,
+          textAlign: TextAlign.center,
         ),
       ),
     );

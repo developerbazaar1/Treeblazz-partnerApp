@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/res/comman/app_images.dart';
+import 'package:tb_patner/res/comman/app_toast_bar.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_text_feild.dart';
 
@@ -76,7 +77,10 @@ class EditProfileScreen extends StatelessWidget {
           height: height * 0.07,
           child: CustomButton(
             text: "Update",
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+              Navigator.of(context).pop();
+              ToastBar.show(context, "Profile Updated Successfully");
+            },
             vspacing: height * 0.02,
             fontSize: width * 0.05,
           ),

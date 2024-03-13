@@ -33,5 +33,6 @@ class AppColor {
   // text
   static const textDarkBlue = Color(0xFF596F79);
 
-  // menu colors
+  // border color
+  static final containerGreyBorder = greyColor.withOpacity(0.3);
 }
