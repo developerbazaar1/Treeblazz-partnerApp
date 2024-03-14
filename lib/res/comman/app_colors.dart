@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:tb_patner/utils/enum.dart';
 
 class AppColor {
   //static const rColor = Color(0xFF);
@@ -35,4 +36,14 @@ class AppColor {
 
   // border color
   static final containerGreyBorder = greyColor.withOpacity(0.3);
+
+  static Map<OrderStatus, Color> statusColors = {
+    OrderStatus.received: Colors.orange,
+    OrderStatus.accepted: Colors.blueAccent,
+    OrderStatus.delivered: Colors.green,
+    OrderStatus.cancelled: Colors.red,
+    OrderStatus.processing: Colors.yellow,
+    OrderStatus.readyForPickup: Colors.purple,
+    OrderStatus.outForDelivery: Colors.teal,
+  };
 }

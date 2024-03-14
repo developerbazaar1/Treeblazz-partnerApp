@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tb_patner/controllers/order_controller.dart';
 import 'package:tb_patner/data/models/dashboard_order.dart';
 import 'package:tb_patner/res/comman/appList.dart';
 import 'package:tb_patner/res/comman/app_buttomBar.dart';

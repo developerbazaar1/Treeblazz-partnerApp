@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:tb_patner/features/order/widget/order_card_widget.dart';
-import 'package:tb_patner/res/comman/appList.dart';
+import 'package:tb_patner/data/models/order.dart';
+import 'package:tb_patner/features/order/widget/order_status_screen.dart';
+import 'package:tb_patner/features/orders%20detailes/widget/order_billing_card_widget.dart';
+import 'package:tb_patner/features/orders%20detailes/widget/order_detail_card_widget.dart';
+import 'package:tb_patner/features/products/widgets/product_card.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_redbutton.dart';
+import 'package:tb_patner/utils/enum.dart';
+import 'package:tb_patner/utils/extensions/extensions.dart';
+import 'package:tb_patner/utils/utils.dart';
 
 import '../../../res/comman/app_colors.dart';
 import '../../../res/comman/app_toast_bar.dart';
 import '../../../res/comman/my_text.dart';
 
 class OrderDetaileScreen extends StatelessWidget {
-  final bool? isNewOrder;
+  final Orders? order;
   static const String routeName = '/orderDetaile';
-  const OrderDetaileScreen({super.key, this.isNewOrder});
+  const OrderDetaileScreen({
+    super.key,
+    this.order,
+  });
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final productLength = order!.products.length;
+    final productHeight = height * (productLength > 1 ? 0.26 : 0.18);
+
     return Scaffold(
       appBar: const MyAppBar(text: "Order Details"),
       body: SingleChildScrollView(
@@ -27,232 +39,105 @@ class OrderDetaileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: height * 0.02),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MyTextSansPro(
+                    text: "Order Status",
+                    fontSize: width * 0.05,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  Utils.checkOrderStatus(order!.status, width),
+                ],
+              ),
+              SizedBox(height: height * 0.02),
               SizedBox(
-                height: height * 0.45,
+                height: productHeight,
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
-                  itemCount: 2,
+                  itemCount: order!.products.length,
                   itemBuilder: (context, index) {
-                    final order = AppList.dummyOrders[index];
-                    return OrdersCard(
-                      orderId: order.id,
-                      price: order.price,
-                      date: order.date,
-                      time: order.time,
-                      onTap: () {},
-                    );
+                    final product = order!.products[index];
+                    return ProductCard(product: product);
                   },
                 ),
               ),
-              const OrderBillingCard(),
-              SizedBox(height: height * 0.035),
+              SizedBox(height: height * 0.02),
               MyTextSansPro(
                 text: "Order Details",
                 fontSize: width * 0.05,
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: height * 0.02),
-              const OrderDetailsCard(),
-              Visibility(
-                visible: isNewOrder ?? false,
-                child: SizedBox(height: height * 0.035),
+              OrderDetailsCard(order: order!),
+              SizedBox(height: height * 0.02),
+              OrderBillingCard(order: order!),
+              SizedBox(height: height * 0.02),
+              CustomButton(
+                text: "Track Order",
+                fontSize: width * 0.048,
+                hspacing: width * 0.13,
+                vspacing: height * 0.016,
+                onTap: () {
+                  Navigator.of(context).pushScreen(
+                    OrderStatusScreen(
+                      orderStatus: order!.status,
+                    ),
+                  );
+                },
               ),
               Visibility(
-                visible: isNewOrder ?? false,
+                visible: order!.status != OrderStatus.received,
+                child: SizedBox(height: height * 0.02),
+              )
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: order!.status != OrderStatus.received
+          ? null
+          : Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                height: height * 0.070,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomButton(
-                      text: "Cancle",
-                      fontSize: width * 0.048,
-                      hspacing: width * 0.13,
-                      vspacing: height * 0.016,
-                      buttonColor: AppColor.black,
-                      onTap: () {
-                        ToastBar.show(
-                          context,
-                          "Order Cancelled Successfully",
-                        );
-                        Navigator.of(context).pop();
-                      },
+                    Expanded(
+                      child: CustomButton(
+                        text: "Cancel",
+                        fontSize: width * 0.048,
+                        hspacing: width * 0.13,
+                        buttonColor: AppColor.black,
+                        onTap: () {
+                          ToastBar.show(
+                            context,
+                            "Order Cancelled Successfully",
+                          );
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ),
-                    CustomButton(
-                      text: "Confrim",
-                      fontSize: width * 0.048,
-                      hspacing: width * 0.13,
-                      vspacing: height * 0.016,
-                      onTap: () {
-                        ToastBar.show(
-                          context,
-                          "Order Confrimed Successfully",
-                        );
-                        Navigator.of(context).pop();
-                      },
+                    SizedBox(width: width * 0.05),
+                    Expanded(
+                      child: CustomButton(
+                        text: "Confrim",
+                        fontSize: width * 0.048,
+                        hspacing: width * 0.13,
+                        onTap: () {
+                          ToastBar.show(
+                            context,
+                            "Order Confrimed Successfully",
+                          );
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: height * 0.035),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class OrderBillingCard extends StatelessWidget {
-  const OrderBillingCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
-    return Column(
-      children: [
-        Container(
-          width: width,
-          padding: EdgeInsets.symmetric(
-            vertical: height * 0.019,
-            horizontal: width * 0.04,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(width * 0.015),
-            border: Border.all(
-              color: AppColor.greyColor.withOpacity(0.4),
             ),
-          ),
-          child: Column(
-            children: [
-              buildDetailes(context, "Sub Total", "320", false),
-              buildDetailes(context, "Tax", "0", false),
-              buildDetailes(context, "Delivery Charge", "50", false),
-            ],
-          ),
-        ),
-        SizedBox(height: height * 0.02),
-        Container(
-          width: width,
-          padding: EdgeInsets.only(
-            top: height * 0.022,
-            bottom: height * 0.012,
-            right: width * 0.04,
-            left: width * 0.04,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(width * 0.015),
-            color: AppColor.greyColor.withOpacity(0.4),
-          ),
-          child: buildDetailes(
-            context,
-            "Total Paid",
-            "370",
-            true,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget buildDetailes(
-    BuildContext context,
-    String title,
-    String price,
-    bool? isTotal,
-  ) {
-    final height = MediaQuery.sizeOf(context).height;
-
-    final width = MediaQuery.sizeOf(context).width;
-    return Padding(
-      padding: EdgeInsets.only(bottom: height * 0.01),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          MyTextSansPro(
-            text: title,
-            fontSize: width * 0.04,
-            fontWeight: FontWeight.w600,
-          ),
-          MyTextPoppines(
-            text: "\$$price.0",
-            fontSize: width * 0.04,
-            fontWeight: FontWeight.w600,
-            color: isTotal ?? false ? AppColor.redColor : AppColor.greyColor,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class OrderDetailsCard extends StatelessWidget {
-  const OrderDetailsCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
-    return Container(
-      width: width,
-      padding: EdgeInsets.symmetric(
-        vertical: height * 0.019,
-        horizontal: width * 0.04,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(width * 0.015),
-        border: Border.all(
-          color: AppColor.greyColor.withOpacity(0.4),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          buildDetailes(context, "Order Number", "#534345"),
-          buildDetailes(context, "Placed Date", "30 Dec 24"),
-          buildDetailes(context, "Payment Mode", "COD"),
-          SizedBox(height: height * 0.005),
-          MyTextSansPro(
-            text: "Delivery Address",
-            fontSize: width * 0.046,
-            fontWeight: FontWeight.w600,
-          ),
-          SizedBox(height: height * 0.012),
-          MyTextSansPro(
-            text: "94, 100ft Ring Rd, Vysya Bank Colony, B T M",
-            fontSize: width * 0.04,
-            fontWeight: FontWeight.w600,
-            color: AppColor.greyColor,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildDetailes(
-    BuildContext context,
-    String title,
-    String price,
-  ) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
-    return Padding(
-      padding: EdgeInsets.only(bottom: height * 0.01),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          MyTextSansPro(
-            text: title,
-            fontSize: width * 0.04,
-            fontWeight: FontWeight.w600,
-          ),
-          MyTextPoppines(
-            text: price,
-            fontSize: width * 0.04,
-            fontWeight: FontWeight.w600,
-            color: AppColor.greyColor,
-          ),
-        ],
-      ),
     );
   }
 }

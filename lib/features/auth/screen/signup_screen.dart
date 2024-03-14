@@ -144,7 +144,7 @@ class SignUpScreen extends StatelessWidget {
                     MyTextFeild(
                       controller: storeAddressController,
                       headingText: "Store Address",
-                      hintText: "Enter address line",
+                      hintText: "Enter store address",
                       focusNode: storeNode,
                       validator: Validator().nullValidator,
                     ),

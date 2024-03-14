@@ -9,10 +9,13 @@ import 'package:tb_patner/features/notification/screen/notification_screen.dart'
 import 'package:tb_patner/features/order/screen/cancelled_order_screen.dart';
 import 'package:tb_patner/features/order/screen/delivered_order_screen.dart';
 import 'package:tb_patner/features/order/screen/ready_for_pickup_order_screen.dart';
+import 'package:tb_patner/features/order/widget/order_status_screen.dart';
 import 'package:tb_patner/features/orders%20detailes/screen/order_detaile_screen.dart';
 import 'package:tb_patner/features/password/screen/change_password_screen.dart';
 import 'package:tb_patner/features/privacy%20and%20policy/privacy_policy_screen.dart';
 import 'package:tb_patner/features/onboarding/screen/on_boarding_screen.dart';
+import 'package:tb_patner/features/products/screens/add_product_screen.dart';
+import 'package:tb_patner/features/products/screens/edit_product_price_quantity_screen.dart';
 import 'package:tb_patner/features/support/screens/support_screen.dart';
 import 'package:tb_patner/features/t&c/screens/terms_and_conditions_screen.dart';
 import 'package:tb_patner/res/comman/app_buttomBar.dart';
@@ -76,6 +79,23 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const MyFinanceScreen(),
       );
+    case EditProductPriceQuantityScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const EditProductPriceQuantityScreen(),
+      );
+    case AddProductScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const AddProductScreen(),
+      );
+
+    case OrderStatusScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const OrderStatusScreen(),
+      );
+
     // case MyAddressScreen.routeName:
     //   return MaterialPageRoute(
     //     settings: routeSettings,

@@ -227,6 +227,62 @@ class AppList {
     Finance(title: "December 2023", earning: "1100"),
     Finance(title: "November 2023", earning: "1500"),
   ];
+
+  // Dropdown product quantity
+  static List<String> quantity = [
+    '1 kg',
+    '2 kg',
+    '5 kg',
+    '10 kg',
+    '15 kg',
+  ];
+
+  // Dropdown product categories
+  static List<String> categories = [
+    'Cannabis',
+    "Vegitable and Fruits",
+    "Personal Care",
+    "Home Care",
+    "Drinks",
+  ];
+
+  // Product Names according to Categories
+  static Map<ProductCategories, List<String>> categoryWords = {
+    ProductCategories.cannabis: [
+      'Indica',
+      'Sativa',
+      'Hybrid',
+      'Edibles',
+      'Concentrates'
+    ],
+    ProductCategories.vegitable: [
+      'Organic',
+      'Fresh',
+      'Local',
+      'Exotic',
+      'Seasonal'
+    ],
+    ProductCategories.personalCare: [
+      'Organic',
+      'Natural',
+      'Vegan',
+      'Luxury',
+      'Gentle'
+    ],
+    ProductCategories.homeCare: [
+      'Eco-Friendly',
+      'Non-Toxic',
+      'Fragrance-Free',
+      'Pet-Safe'
+    ],
+    ProductCategories.drinks: [
+      'Organic',
+      'Artisanal',
+      'Craft',
+      'Premium',
+      'Sparkling'
+    ],
+  };
 }
 
 class Finance {

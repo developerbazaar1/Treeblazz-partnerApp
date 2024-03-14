@@ -17,10 +17,10 @@ class ProfileScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
 
     List<String> profileOptions = [
-      "Order History",
+      // "Order History",
       "My Finance",
       "Change Password",
-      "Notification Sound",
+      // "Notification Sound",
       "Terms and Conditions",
       // "Privacy Polices",
       "Help",
@@ -28,10 +28,10 @@ class ProfileScreen extends StatelessWidget {
       "Sign Out"
     ];
     List onTapOnList = [
-      () {},
+      // () {},
       () => context.pushNamedRoute("/myFinance"),
       () => context.pushNamedRoute("/changePassword"),
-      () => context.pushNamedRoute("/notification"),
+      //() => context.pushNamedRoute("/notification"),
       () => context.pushNamedRoute("/tandc"),
       //() => context.pushNamedRoute("/privacy"),
       () => context.pushNamedRoute("/support"),
@@ -115,8 +115,8 @@ class ProfileScreen extends StatelessWidget {
                   return BuildProfileCard(
                     heading: profileOptions[index],
                     onTap: onTapOnList[index],
-                    headingColor: index == 7 ? AppColor.redColor : Colors.black,
-                    isArrow: index == 7 ? false : true,
+                    headingColor: index == 5 ? AppColor.redColor : Colors.black,
+                    isArrow: index == 5 ? false : true,
                   );
                 },
               ),

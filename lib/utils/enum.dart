@@ -1,13 +1,3 @@
-enum OrderStatus {
-  order,
-  delivered,
-  shipped,
-  outOfDelivery,
-  pending,
-  cancelled,
-  rate
-}
-
 enum ProductCategory {
   flower,
   preroll,
@@ -19,3 +9,25 @@ enum ProductCategory {
   edibles,
   smoking,
 }
+
+enum ProductCategories {
+  cannabis,
+  vegitable,
+  personalCare,
+  homeCare,
+  drinks,
+}
+
+enum PaymentMode { cod, creditCard, debitCard, strip }
+
+enum OrderStatus {
+  received,
+  accepted,
+  processing,
+  readyForPickup,
+  outForDelivery,
+  delivered,
+  cancelled,
+}
+
+  // pickedUpByDriver,

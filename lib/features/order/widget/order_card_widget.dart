@@ -1,26 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:tb_patner/data/models/order.dart';
 import 'package:tb_patner/features/orders%20detailes/screen/order_detaile_screen.dart';
 import 'package:tb_patner/res/comman/app_images.dart';
 import 'package:tb_patner/utils/extensions/extensions.dart';
+import 'package:tb_patner/utils/utils.dart';
 
 import '../../../res/comman/app_colors.dart';
 import '../../../res/comman/my_text.dart';
 
 class OrdersCard extends StatelessWidget {
-  final String orderId;
-  final String date;
-  final String time;
-  final String price;
   final VoidCallback? onTap;
+  final Orders order;
   const OrdersCard({
     super.key,
-    required this.price,
-    required this.orderId,
-    required this.date,
-    required this.time,
     this.onTap,
+    required this.order,
   });
 
   @override
@@ -31,44 +28,48 @@ class OrdersCard extends StatelessWidget {
       onTap: onTap ??
           () {
             Navigator.of(context).pushScreen(
-              const OrderDetaileScreen(isNewOrder: true),
+              OrderDetaileScreen(order: order),
             );
           },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: height * 0.01),
-        padding: EdgeInsets.symmetric(
-          vertical: height * 0.02,
-          horizontal: width * 0.03,
-        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(width * 0.02),
           color: AppColor.containerGreyBg,
+          border: Border.all(
+            color: AppColor.containerGreyBorder,
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            // Order Img
+            Container(
               width: width * 0.3,
-              height: height * 0.1,
-              child: Image.asset(
-                AppImages.organicCBDFlower,
-                fit: BoxFit.cover,
+              height: height * 0.175,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(width * 0.02),
+                image: const DecorationImage(
+                  image: AssetImage(AppImages.organicCBDFlower),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            SizedBox(width: width * 0.05),
+            // Order Detailes
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: height * 0.016),
                 MyTextSansPro(
-                  text: "Order #$orderId",
+                  text: "Order #${order.id}",
                   fontSize: width * 0.045,
                   color: AppColor.black,
                   fontWeight: FontWeight.w600,
                 ),
                 SizedBox(height: height * 0.012),
                 MyTextPoppines(
-                  text: price,
+                  text: "\$ ${order.total}",
                   fontSize: width * 0.05,
                   color: AppColor.redColor,
                   fontWeight: FontWeight.w600,
@@ -83,12 +84,12 @@ class OrdersCard extends StatelessWidget {
                     ),
                     SizedBox(width: width * 0.014),
                     MyTextPoppines(
-                      text: date,
+                      text: order.date,
                       fontSize: width * 0.032,
                       color: AppColor.black,
                       fontWeight: FontWeight.w500,
                     ),
-                    SizedBox(width: width * 0.04),
+                    SizedBox(width: width * 0.06),
                     Icon(
                       Iconsax.clock_copy,
                       size: width * 0.04,
@@ -96,7 +97,7 @@ class OrdersCard extends StatelessWidget {
                     ),
                     SizedBox(width: width * 0.014),
                     MyTextPoppines(
-                      text: time,
+                      text: order.time,
                       fontSize: width * 0.032,
                       color: AppColor.black,
                       fontWeight: FontWeight.w500,
@@ -104,13 +105,36 @@ class OrdersCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: height * 0.016),
-                MyTextSansPro(
-                  text: "Cash On Delivery",
-                  fontSize: width * 0.04,
-                  color: AppColor.greyColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                Utils.checkOrderStatus(order.status, width),
+                // SizedBox(height: height * 0.016),
+                // MyTextSansPro(
+                //   text: Utils.getPaymentModeString(order.paymentMode),
+                //   fontSize: width * 0.04,
+                //   color: AppColor.greyColor,
+                //   fontWeight: FontWeight.w500,
+                // ),
+                SizedBox(height: height * 0.016),
               ],
+            ),
+            // No of Products in order
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: height * 0.005,
+                horizontal: width * 0.03,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(width * 0.02),
+                  topRight: Radius.circular(width * 0.02),
+                ),
+                color: AppColor.black,
+              ),
+              child: MyTextPoppines(
+                text: order.products.length.toString(),
+                color: AppColor.white,
+                fontWeight: FontWeight.w600,
+                fontSize: width * 0.035,
+              ),
             ),
           ],
         ),

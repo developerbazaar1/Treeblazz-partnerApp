@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:tb_patner/features/home/screens/home_screen.dart';
+import 'package:tb_patner/features/my%20finance/screens/my_finance_screen.dart';
 import 'package:tb_patner/features/products/screens/all_product_screen.dart';
 import 'package:tb_patner/features/order/screen/order_screen.dart';
 import 'package:tb_patner/features/user%20profile/screens/profile_screen.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
+import 'package:tb_patner/utils/utils.dart';
 
 class AppBottomBar extends StatefulWidget {
   final int? selectedIndex;
@@ -31,7 +33,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
     const HomeScreen(),
     const ProductScreen(),
     const OrderScreen(),
-    const OrderScreen(),
+    const MyFinanceScreen(),
     const ProfileScreen(),
   ];
 
@@ -84,10 +86,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
           color: AppColor.white,
         ),
         child: Theme(
-          data: Theme.of(context).copyWith(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
+          data: Utils.noSplashEffect(context),
           child: BottomNavigationBar(
             elevation: 0.0,
             items: <BottomNavigationBarItem>[
@@ -118,10 +117,10 @@ class _AppBottomBarState extends State<AppBottomBar> {
               BottomNavigationBarItem(
                 backgroundColor: AppColor.white,
                 icon: Icon(
-                  Iconsax.shopping_cart_copy,
+                  Iconsax.money_2_copy,
                   color: _getColor(3),
                 ),
-                label: 'Cart',
+                label: 'Finance',
               ),
               BottomNavigationBarItem(
                 backgroundColor: AppColor.white,

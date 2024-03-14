@@ -15,12 +15,9 @@ class MyFinanceScreen extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      appBar: const MyAppBar(text: "My Finance"),
+      appBar: const MyAppBarWithoutButton(text: "My Finance"),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: height * 0.02,
-          horizontal: width * 0.055,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.055),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

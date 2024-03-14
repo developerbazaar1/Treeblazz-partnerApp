@@ -1,3 +1,7 @@
+import 'package:tb_patner/utils/enum.dart';
+
+import 'products.dart';
+
 class Order {
   final String id;
   final String price;
@@ -11,30 +15,6 @@ class Order {
       required this.date,
       required this.time,
       required this.img});
-}
-
-class Product {
-  final String id;
-  final String name;
-  final double price;
-  final String description;
-  final ProductCategories category;
-  final int availableQuantity;
-  final bool productVisibility;
-  final String thumbnailImg;
-  final List imgs;
-
-  Product({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.description,
-    required this.category,
-    required this.availableQuantity,
-    required this.productVisibility,
-    required this.thumbnailImg,
-    required this.imgs,
-  });
 }
 
 class Orders {
@@ -65,20 +45,4 @@ class Orders {
     required this.total,
     required this.deliveryAddress,
   });
-}
-
-enum ProductCategories { cannabis, homeCare, drinks, vegitable }
-
-enum PaymentMode { cod, online }
-
-enum OrderStatus {
-  received,
-  accepted,
-  processing,
-  packed,
-  readyForPickup,
-  pickedUpByDriver,
-  outForDelivery,
-  delivered,
-  canceled,
 }

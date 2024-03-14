@@ -10,10 +10,10 @@ class YourScreen extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      appBar: MyAppBar(text: "Your"),
+      appBar: const MyAppBar(text: "Your"),
       body: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: height * 0.03,
+          vertical: height * 0.01,
           horizontal: width * 0.045,
         ),
         child: Column(
