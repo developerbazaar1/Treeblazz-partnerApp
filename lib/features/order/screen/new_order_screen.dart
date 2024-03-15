@@ -11,6 +11,8 @@ class NewOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.sizeOf(context).height;
+
     final orderController = OrderController.instance;
     final newOrders = orderController.filteredOrders
         .where((order) => order.status == OrderStatus.received)
@@ -18,7 +20,10 @@ class NewOrderScreen extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(text: "New Orders"),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.045),
+        padding: EdgeInsets.symmetric(
+          vertical: height * 0.01,
+          horizontal: width * 0.045,
+        ),
         child: ListView.builder(
           itemCount: newOrders.length,
           itemBuilder: (context, index) {

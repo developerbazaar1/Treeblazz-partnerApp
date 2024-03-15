@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/controllers/order_controller.dart';
+import 'package:tb_patner/features/home/widgets/home_appbar.dart';
 import 'package:tb_patner/features/home/widgets/home_dashboard_container_dart';
 import 'package:tb_patner/res/comman/appList.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
-import 'package:tb_patner/utils/enum.dart';
 import 'package:tb_patner/utils/extensions/extensions.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,23 +16,7 @@ class HomeScreen extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final orderController = OrderController.instance;
-    List onTapContainer = [
-      '/newOrder',
-      '/orderProcessing',
-      '/readyForPickupOrder',
-      '/orderOnTheWay',
-      '/deliveredOrders',
-      '/cancelledOrder',
-    ];
 
-    List orderStatus = [
-      OrderStatus.received,
-      OrderStatus.processing,
-      OrderStatus.readyForPickup,
-      OrderStatus.outForDelivery,
-      OrderStatus.delivered,
-      OrderStatus.cancelled,
-    ];
     return Scaffold(
       backgroundColor: AppColor.white,
       appBar: PreferredSize(
@@ -68,13 +52,13 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final order = AppList.dashboardOrder[index];
-                  final status = orderStatus[index];
                   return HomeDashboardContainers(
-                    quantity: orderController.getOrderLengthByStatus(status),
+                    quantity: orderController
+                        .getOrderLengthByStatus(order.orderStatus),
                     title: order.title,
                     boxColor: order.boxColor,
                     isNewOrder: index == 0 ? true : false,
-                    onTap: () => context.pushNamedRoute(onTapContainer[index]),
+                    onTap: () => context.pushNamedRoute(order.route),
                   );
                 },
               ),

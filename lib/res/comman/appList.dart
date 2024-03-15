@@ -74,39 +74,40 @@ class AppList {
 // List of Dashboard order
   static List<DashboardOrder> dashboardOrder = [
     DashboardOrder(
-      quantity: 5,
+      orderStatus: OrderStatus.received,
+      route: '/newOrder',
       title: "New Order Request",
       boxColor: AppColor.lightPink,
     ),
-    // DashboardOrder(
-    //   quantity: 0,
-    //   title: "Upcoming Request",
-    //   boxColor: AppColor.hd_lightBlue,P
-    // ),
     DashboardOrder(
-      quantity: 10,
       title: "Orders Processing",
       boxColor: AppColor.hd_lightPurple,
+      orderStatus: OrderStatus.processing,
+      route: '/orderProcessing',
     ),
     DashboardOrder(
-      quantity: 2,
       title: "Ready For Delivery/Pickup",
       boxColor: AppColor.hd_lightGreen,
+      orderStatus: OrderStatus.readyForPickup,
+      route: '/readyForPickupOrder',
     ),
     DashboardOrder(
-      quantity: 0,
       title: "On The Way",
       boxColor: AppColor.hd_lightGreen,
+      orderStatus: OrderStatus.outForDelivery,
+      route: '/orderOnTheWay',
     ),
     DashboardOrder(
-      quantity: 235,
       title: "Delivered Orders",
       boxColor: AppColor.hd_cream,
+      orderStatus: OrderStatus.delivered,
+      route: '/deliveredOrders',
     ),
     DashboardOrder(
-      quantity: 50,
       title: "Cancelled Orders",
       boxColor: AppColor.lightPink,
+      orderStatus: OrderStatus.cancelled,
+      route: '/cancelledOrder',
     ),
   ];
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tb_patner/data/models/products.dart';
 import 'package:tb_patner/utils/enum.dart';
@@ -8,14 +9,40 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
+    // Initialize the controller with the initial value of _productQuantity
+    quantityController.text = _productQuantity.value.toString();
     _dummyProducts.addAll(Utils.generateDummyProducts());
     _filteredProducts.assignAll(_dummyProducts);
     super.onInit();
   }
 
+  // controllers
+  TextEditingController quantityController = TextEditingController();
+
   // variables
   final RxList<Product> _dummyProducts = <Product>[].obs;
   final RxList<Product> _filteredProducts = <Product>[].obs;
+  final Rx<int> _productQuantity = 0.obs;
+
+  void incrementProductQuantity() {
+    int currentQuantity = int.tryParse(quantityController.text) ?? 0;
+    _productQuantity.value = currentQuantity + 1;
+    quantityController.text = _productQuantity.value.toString();
+  }
+
+  void decrementProductQuantity() {
+    int currentQuantity = int.tryParse(quantityController.text) ?? 0;
+    if (currentQuantity > 0) {
+      _productQuantity.value = currentQuantity - 1;
+      quantityController.text = _productQuantity.value.toString();
+    }
+  }
+
+  // Set selected product
+  void selectedProduct(Product p) {
+    final product = p;
+    quantityController.text = product.availableQuantity.toString();
+  }
 
   // check if the product are empty only if it generate dummyorder list
   List<Product> get dummyProducts {

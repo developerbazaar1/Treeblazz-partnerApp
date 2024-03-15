@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:tb_patner/controllers/products_controller.dart';
 import 'package:tb_patner/data/models/products.dart';
+import 'package:tb_patner/features/products/screens/edit_product_price_quantity_screen.dart';
 import 'package:tb_patner/res/comman/app_images.dart';
 import 'package:tb_patner/utils/extensions/extensions.dart';
 import 'package:tb_patner/utils/utils.dart';
@@ -19,6 +21,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final productController = ProductController.instance;
     return Container(
       margin: EdgeInsets.symmetric(vertical: height * 0.01),
       padding: EdgeInsets.symmetric(
@@ -51,11 +54,14 @@ class ProductCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               SizedBox(height: height * 0.002),
-              MyTextSansPro(
-                text: product.name,
-                fontSize: width * 0.042,
-                color: AppColor.black,
-                fontWeight: FontWeight.w600,
+              SizedBox(
+                width: width * 0.4,
+                child: MyTextSansPro(
+                  text: product.name,
+                  fontSize: width * 0.042,
+                  color: AppColor.black,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               SizedBox(height: height * 0.005),
               MyTextSansPro(
@@ -74,11 +80,16 @@ class ProductCard extends StatelessWidget {
             ],
           ),
           InkWell(
-            onTap: () => context.pushNamedRoute('/editProductPriceQuantity'),
+            onTap: () {
+              productController.selectedProduct(product);
+              Navigator.of(context).pushScreen(
+                EditProductPriceQuantityScreen(product: product),
+              );
+            },
             child: Icon(
               Iconsax.edit_copy,
               color: AppColor.black,
-              size: width * 0.042,
+              size: width * 0.045,
             ),
           ),
         ],

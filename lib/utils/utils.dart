@@ -70,7 +70,7 @@ class Utils {
     return orderStaus[status.index];
   }
 
-  // Function generating 15 products
+  // Function generating 100 products
   static List<Product> generateDummyProducts() {
     List<Product> products = [];
     Random random = Random();
@@ -83,7 +83,7 @@ class Utils {
       return '$prefix $suffix';
     }
 
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 100; i++) {
       ProductCategories category = ProductCategories
           .values[random.nextInt(ProductCategories.values.length)];
       String productName = generateProductName(category, random);
@@ -105,12 +105,12 @@ class Utils {
     return products;
   }
 
-  // Fucntion generate 10 dummy orders
+  // Fucntion generate 100 dummy orders
   static List<Orders> generateDummyOrders(List<Product> dummyProducts) {
     List<Orders> orders = [];
     Random random = Random();
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 100; i++) {
       List<Product> orderProducts = [];
       // Randomly choose between 1 to 5 products for each order
       int numberOfProducts = random.nextInt(5) + 1;

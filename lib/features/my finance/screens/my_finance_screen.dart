@@ -17,7 +17,10 @@ class MyFinanceScreen extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBarWithoutButton(text: "My Finance"),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.055),
+        padding: EdgeInsets.symmetric(
+          vertical: height * 0.01,
+          horizontal: width * 0.045,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

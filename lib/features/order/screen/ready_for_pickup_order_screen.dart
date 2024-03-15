@@ -8,11 +8,13 @@ class ReadyForPickupOrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: const MyAppBar(text: "Ready For Delivery/Pickup"),
       body: Padding(
         padding: EdgeInsets.symmetric(
+          vertical: height * 0.01,
           horizontal: width * 0.045,
         ),
         child: ListView.builder(

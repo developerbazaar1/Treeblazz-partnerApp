@@ -82,11 +82,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const MyFinanceScreen(),
       );
-    case EditProductPriceQuantityScreen.routeName:
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => const EditProductPriceQuantityScreen(),
-      );
+    // case EditProductPriceQuantityScreen.routeName:
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => const EditProductPriceQuantityScreen(),
+    //   );
     case AddProductScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,

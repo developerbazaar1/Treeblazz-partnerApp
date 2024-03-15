@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:tb_patner/controllers/products_controller.dart';
+import 'package:tb_patner/data/models/products.dart';
 import 'package:tb_patner/features/products/widgets/product_quantity_dropdown.dart';
 import 'package:tb_patner/res/comman/app_toast_bar.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
@@ -14,14 +17,19 @@ import '../../notification/screen/notification_screen.dart';
 
 class EditProductPriceQuantityScreen extends StatelessWidget {
   static const String routeName = '/editProductPriceQuantity';
-  const EditProductPriceQuantityScreen({super.key});
+  final Product product;
+  const EditProductPriceQuantityScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    TextEditingController nameController = TextEditingController();
-    TextEditingController priceController = TextEditingController();
+    final productController = ProductController.instance;
+
+    TextEditingController nameController =
+        TextEditingController(text: product.name);
+    TextEditingController priceController =
+        TextEditingController(text: product.price.toString());
 
     return Scaffold(
       appBar: const MyAppBar(text: "Edit Price & Quantity"),
@@ -56,7 +64,61 @@ class EditProductPriceQuantityScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const ProductQuantityDropDown(),
+              Row(
+                children: [
+                  Expanded(
+                    child: MyTextFeild(
+                      controller: productController.quantityController,
+                      headingText: "Quantity",
+                      hintText: "0",
+                      isNumberTypeField: true,
+                    ),
+                  ),
+                  SizedBox(width: width * 0.04),
+                  Column(
+                    children: [
+                      SizedBox(height: height * 0.055),
+                      InkWell(
+                        onTap: () =>
+                            productController.incrementProductQuantity(),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.04,
+                            vertical: height * 0.002,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(),
+                            color: AppColor.containerGreyBg,
+                          ),
+                          child: Icon(
+                            Iconsax.arrow_up_1,
+                            size: width * 0.045,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: height * 0.01),
+                      InkWell(
+                        onTap: () =>
+                            productController.decrementProductQuantity(),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.04,
+                            vertical: height * 0.002,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(),
+                            color: AppColor.containerGreyBg,
+                          ),
+                          child: Icon(
+                            Iconsax.arrow_down,
+                            size: width * 0.045,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
               SizedBox(height: height * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

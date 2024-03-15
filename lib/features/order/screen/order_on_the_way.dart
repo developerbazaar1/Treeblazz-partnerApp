@@ -10,6 +10,7 @@ class OrderOnTheWayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final orderController = OrderController.instance;
     final onTheWayOrders = orderController.filteredOrders
@@ -18,7 +19,10 @@ class OrderOnTheWayScreen extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(text: "Orders On The Way"),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.045),
+        padding: EdgeInsets.symmetric(
+          vertical: height * 0.01,
+          horizontal: width * 0.045,
+        ),
         child: ListView.builder(
           itemCount: onTheWayOrders.length,
           itemBuilder: (context, index) {

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/features/notification/screen/notification_screen.dart';
-import 'package:tb_patner/features/products/screens/edit_product_price_quantity_screen.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
 import 'package:tb_patner/res/comman/app_images.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
-import 'package:tb_patner/utils/extensions/extensions.dart';
 
 class MenuCategoriesProductsScreen extends StatelessWidget {
   final String? prodcutName;
@@ -34,11 +32,7 @@ class MenuProductsCard extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushScreen(
-          const EditProductPriceQuantityScreen(),
-        );
-      },
+      onTap: () {},
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: width * 0.01),
         margin: EdgeInsets.symmetric(
