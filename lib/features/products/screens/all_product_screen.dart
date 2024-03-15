@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:tb_patner/controllers/products_controller.dart';
 import 'package:tb_patner/data/models/products.dart';
 import 'package:tb_patner/features/products/widgets/add_product_floating_button.dart';
+import 'package:tb_patner/features/products/widgets/filter_product_button.dart';
 import 'package:tb_patner/features/products/widgets/product_card.dart';
 import 'package:tb_patner/features/products/widgets/search_textfeild.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
@@ -17,7 +17,8 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    final productController = Get.put(ProductController());
+
+    final productController = ProductController.instance;
 
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
@@ -34,26 +35,28 @@ class ProductScreen extends StatelessWidget {
               children: [
                 Expanded(child: SearchTextFeild(controller: controller)),
                 SizedBox(width: width * 0.03),
-                CircleAvatar(
-                  radius: width * 0.06,
-                  backgroundColor: const Color.fromARGB(255, 244, 245, 247),
-                  child: const Icon(
-                    Iconsax.filter,
-                    color: AppColor.redColor,
-                  ),
-                ),
+                const FilterProductButton(),
               ],
             ),
             SizedBox(height: height * 0.02),
             Expanded(
-              child: ListView.builder(
-                itemCount: productController.dummyProducts.length,
-                itemBuilder: (context, index) {
-                  final List<Product> products =
-                      productController.dummyProducts;
-                  return ProductCard(product: products[index]);
-                },
-              ),
+              child: RefreshIndicator(
+                  color: Colors.black,
+                  backgroundColor: AppColor.lightPink,
+                  onRefresh: () async {
+                    await Future.delayed(const Duration(seconds: 1));
+                    productController.refreshProducts();
+                  },
+                  child: Obx(
+                    () => ListView.builder(
+                      itemCount: productController.filteredProducts.length,
+                      itemBuilder: (context, index) {
+                        final List<Product> products =
+                            productController.filteredProducts;
+                        return ProductCard(product: products[index]);
+                      },
+                    ),
+                  )),
             ),
           ],
         ),
@@ -62,6 +65,8 @@ class ProductScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 
 

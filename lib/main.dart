@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tb_patner/controllers/add_product_controller.dart';
+import 'package:tb_patner/controllers/order_controller.dart';
 import 'package:tb_patner/controllers/products_controller.dart';
 import 'package:tb_patner/features/onboarding/screen/on_boarding_screen.dart';
 import 'package:tb_patner/features/products/screens/menu_categories_products_screen.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashIntroScreen(),
+      home: const AppBottomBar(),
       navigatorKey: navigatorKey,
       onGenerateRoute: (settings) => generateRoute(settings),
     );
@@ -38,5 +40,7 @@ class InitialBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(ProductController());
+    Get.put(OrderController());
+    Get.put(AddProductController());
   }
 }

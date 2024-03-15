@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tb_patner/controllers/order_controller.dart';
-import 'package:tb_patner/data/models/dashboard_order.dart';
+import 'package:tb_patner/features/home/widgets/home_dashboard_container_dart';
 import 'package:tb_patner/res/comman/appList.dart';
-import 'package:tb_patner/res/comman/app_buttomBar.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
-import 'package:tb_patner/res/comman/app_images.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
+import 'package:tb_patner/utils/enum.dart';
 import 'package:tb_patner/utils/extensions/extensions.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,14 +15,23 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final orderController = OrderController.instance;
     List onTapContainer = [
+      '/newOrder',
+      '/orderProcessing',
       '/readyForPickupOrder',
-      //  '/deliveredOrders',
-      '/deliveredOrders',
-      '/readyForPickupOrder',
-      '/deliveredOrders',
+      '/orderOnTheWay',
       '/deliveredOrders',
       '/cancelledOrder',
+    ];
+
+    List orderStatus = [
+      OrderStatus.received,
+      OrderStatus.processing,
+      OrderStatus.readyForPickup,
+      OrderStatus.outForDelivery,
+      OrderStatus.delivered,
+      OrderStatus.cancelled,
     ];
     return Scaffold(
       backgroundColor: AppColor.white,
@@ -62,117 +68,17 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final order = AppList.dashboardOrder[index];
+                  final status = orderStatus[index];
                   return HomeDashboardContainers(
-                    quantity: order.quantity,
+                    quantity: orderController.getOrderLengthByStatus(status),
                     title: order.title,
                     boxColor: order.boxColor,
                     isNewOrder: index == 0 ? true : false,
-                    onTap: () {
-                      index == 0
-                          ? Navigator.of(context).pushScreen(
-                              const AppBottomBar(selectedIndex: 2),
-                            )
-                          : context.pushNamedRoute(
-                              onTapContainer[index],
-                            );
-                    },
+                    onTap: () => context.pushNamedRoute(onTapContainer[index]),
                   );
                 },
               ),
             )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
-    return Padding(
-      padding: EdgeInsets.only(top: height * 0.04, left: width * 0.03),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () {
-              // Navigator.of(context).pushScreen(
-              //   const AppBottomBar(selectedIndex: 4),
-              // );
-            },
-            child: CircleAvatar(
-              radius: width * 0.065,
-              backgroundImage: const AssetImage(
-                AppImages.man,
-              ),
-            ),
-          ),
-          SizedBox(width: width * 0.03),
-          MyTextSansPro(
-            text: "Lorem Store",
-            fontSize: width * 0.05,
-            fontWeight: FontWeight.w600,
-            height: 3,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class HomeDashboardContainers extends StatelessWidget {
-  final int quantity;
-  final String title;
-  final Color boxColor;
-  final VoidCallback onTap;
-  final bool? isNewOrder;
-  const HomeDashboardContainers({
-    super.key,
-    required this.quantity,
-    required this.title,
-    required this.boxColor,
-    required this.onTap,
-    this.isNewOrder,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: height * 0.03,
-          horizontal: width * 0.05,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(width * 0.03),
-          color: boxColor,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MyTextPoppines(
-              text: quantity.toString(),
-              fontSize: width * 0.06,
-              fontWeight: FontWeight.w600,
-              color: isNewOrder ?? false ? AppColor.redColor : AppColor.black,
-            ),
-            SizedBox(height: height * 0.02),
-            SizedBox(
-              width: width * 0.3,
-              child: MyTextPoppines(
-                text: title,
-                fontSize: width * 0.04,
-                fontWeight: FontWeight.w500,
-                color: AppColor.hd_greyColor,
-              ),
-            ),
           ],
         ),
       ),

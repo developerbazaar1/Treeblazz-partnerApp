@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:tb_patner/controllers/products_controller.dart';
+import 'package:tb_patner/utils/enum.dart';
 import 'package:tb_patner/utils/utils.dart';
 
 import '../data/models/order.dart';
@@ -7,12 +8,48 @@ import '../data/models/order.dart';
 class OrderController extends GetxController {
   static OrderController get instance => Get.find();
   final controller = ProductController.instance;
-  // variables
-  List<Orders>? _dummyOrders;
 
-  // check if the order are empty only if it generate dummyorder list
-  List<Orders> get dummyOrders {
-    _dummyOrders ??= Utils.generateDummyOrders(controller.dummyProducts);
-    return _dummyOrders!;
+  @override
+  void onInit() {
+    super.onInit();
+    _dummyOrders.addAll(Utils.generateDummyOrders(controller.dummyProducts));
+    _filteredOrders.assignAll(_dummyOrders);
+  }
+
+  //* Variables
+  final RxList<Orders> _dummyOrders = <Orders>[].obs;
+  final RxList<Orders> _filteredOrders = <Orders>[].obs;
+
+  //* Getters
+  List<Orders> get filteredOrders => _filteredOrders;
+
+  //* Methods
+  // filtering the order based on there status
+  void filterOrders(OrderStatus status) {
+    _filteredOrders
+        .assignAll(_dummyOrders.where((order) => order.status == status));
+  }
+
+  // clear all the filter and set it again to dummyorder list
+  void clearFilter() {
+    _filteredOrders.assignAll(_dummyOrders);
+  }
+
+  // Update the list when page is refreshed
+  List<Orders> refreshOrders() {
+    _dummyOrders.clear();
+    _dummyOrders.value = Utils.generateDummyOrders(controller.dummyProducts);
+    clearFilter();
+    return _dummyOrders;
+  }
+
+  // Function to filter orders based on status
+  List<Orders> filterOrdersByStatus(OrderStatus status) {
+    return _dummyOrders.where((order) => order.status == status).toList();
+  }
+
+  // Function to calculate the length of orders with a specific status
+  int getOrderLengthByStatus(OrderStatus status) {
+    return filterOrdersByStatus(status).length;
   }
 }

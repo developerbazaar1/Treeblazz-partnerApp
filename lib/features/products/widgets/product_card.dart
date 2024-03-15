@@ -78,7 +78,7 @@ class ProductCard extends StatelessWidget {
             child: Icon(
               Iconsax.edit_copy,
               color: AppColor.black,
-              size: width * 0.038,
+              size: width * 0.042,
             ),
           ),
         ],

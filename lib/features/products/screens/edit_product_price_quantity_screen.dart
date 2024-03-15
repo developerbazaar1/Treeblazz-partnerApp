@@ -62,7 +62,7 @@ class EditProductPriceQuantityScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MyTextSansPro(
-                    text: "Stock In",
+                    text: "Active",
                     fontSize: width * 0.045,
                     color: AppColor.greyColor,
                     fontWeight: FontWeight.w500,

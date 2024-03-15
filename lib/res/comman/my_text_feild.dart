@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tb_patner/res/comman/app_colors.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
 
@@ -9,7 +10,7 @@ class MyTextFeild extends StatelessWidget {
   final Color? hintTextColor;
   final Color? fillColor;
   final int? maxLines;
-
+  final bool? isNumberTypeField;
   final FocusNode? focusNode;
   final Function(String)? onSubmit;
   final String? Function(String?)? validator;
@@ -24,12 +25,14 @@ class MyTextFeild extends StatelessWidget {
     this.onSubmit,
     this.maxLines,
     this.hintTextColor,
+    this.isNumberTypeField,
   });
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+
     OutlineInputBorder lineBorder = OutlineInputBorder(
       borderSide: BorderSide(
         width: width * 0.002,
@@ -53,6 +56,14 @@ class MyTextFeild extends StatelessWidget {
           controller: controller,
           cursorColor: Colors.black,
           maxLines: maxLines ?? 1,
+          inputFormatters: isNumberTypeField ?? false
+              ? [
+                  FilteringTextInputFormatter.digitsOnly,
+                ]
+              : [],
+          keyboardType: isNumberTypeField ?? false
+              ? TextInputType.number
+              : TextInputType.text,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: width * 0.03,

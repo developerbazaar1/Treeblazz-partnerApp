@@ -112,7 +112,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   Iconsax.receipt_1_copy,
                   color: _getColor(2),
                 ),
-                label: 'Order',
+                label: 'Orders',
               ),
               BottomNavigationBarItem(
                 backgroundColor: AppColor.white,
@@ -120,7 +120,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   Iconsax.money_2_copy,
                   color: _getColor(3),
                 ),
-                label: 'Finance',
+                label: 'Finances',
               ),
               BottomNavigationBarItem(
                 backgroundColor: AppColor.white,

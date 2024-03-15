@@ -33,6 +33,43 @@ class Utils {
     );
   }
 
+  // Function taking category enum and returing it as a String
+  static String getCategoryStringNew(ProductCategories category) {
+    List<String> categories = [
+      'Cannabis',
+      'Vegitable and Fruits',
+      'Personal Care',
+      'Home Care',
+      'Drinks',
+    ];
+    return categories[category.index];
+  }
+
+  // Function taking paymentMode enum and returing it as a String
+  static String getPaymentModeString(PaymentMode mode) {
+    List<String> modes = [
+      'Cash On Delivery',
+      'VIA Credit Card',
+      'VIA Debit Card',
+      'Stripe',
+    ];
+    return modes[mode.index];
+  }
+
+  // Fuction take orderStatus enum and return  string
+  static String getOrderStatusString(OrderStatus status) {
+    List<String> orderStaus = [
+      "Received",
+      "Accepted",
+      "Processing",
+      "Ready For Pickup",
+      "Out For Delivery",
+      "Delivered",
+      "Cancelled",
+    ];
+    return orderStaus[status.index];
+  }
+
   // Function generating 15 products
   static List<Product> generateDummyProducts() {
     List<Product> products = [];
@@ -66,18 +103,6 @@ class Utils {
     }
 
     return products;
-  }
-
-  // Function taking category enum and returing it as a String
-  static String getCategoryStringNew(ProductCategories category) {
-    List<String> categories = [
-      'Cannabis',
-      'Vegitable and Fruits',
-      'Personal Care',
-      'Home Care',
-      'Drinks',
-    ];
-    return categories[category.index];
   }
 
   // Fucntion generate 10 dummy orders
@@ -129,17 +154,6 @@ class Utils {
     }
 
     return orders;
-  }
-
-  // Function taking paymentMode enum and returing it as a String
-  static String getPaymentModeString(PaymentMode mode) {
-    List<String> modes = [
-      'Cash On Delivery',
-      'VIA Credit Card',
-      'VIA Debit Card',
-      'Stripe',
-    ];
-    return modes[mode.index];
   }
 
   // Checking the order status and on based of it its returing row

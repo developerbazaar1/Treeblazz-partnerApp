@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
     List<String> profileOptions = [
       // "Order History",
-      "My Finance",
+      // "My Finance",
       "Change Password",
       // "Notification Sound",
       "Terms and Conditions",
@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
     ];
     List onTapOnList = [
       // () {},
-      () => context.pushNamedRoute("/myFinance"),
+      //() => context.pushNamedRoute("/myFinance"),
       () => context.pushNamedRoute("/changePassword"),
       //() => context.pushNamedRoute("/notification"),
       () => context.pushNamedRoute("/tandc"),
@@ -115,8 +115,8 @@ class ProfileScreen extends StatelessWidget {
                   return BuildProfileCard(
                     heading: profileOptions[index],
                     onTap: onTapOnList[index],
-                    headingColor: index == 5 ? AppColor.redColor : Colors.black,
-                    isArrow: index == 5 ? false : true,
+                    headingColor: index == 4 ? AppColor.redColor : Colors.black,
+                    isArrow: index == 4 ? false : true,
                   );
                 },
               ),

@@ -8,6 +8,9 @@ import 'package:tb_patner/features/my%20finance/screens/my_finance_screen.dart';
 import 'package:tb_patner/features/notification/screen/notification_screen.dart';
 import 'package:tb_patner/features/order/screen/cancelled_order_screen.dart';
 import 'package:tb_patner/features/order/screen/delivered_order_screen.dart';
+import 'package:tb_patner/features/order/screen/new_order_screen.dart';
+import 'package:tb_patner/features/order/screen/order_on_the_way.dart';
+import 'package:tb_patner/features/order/screen/order_processing_screen.dart';
 import 'package:tb_patner/features/order/screen/ready_for_pickup_order_screen.dart';
 import 'package:tb_patner/features/order/widget/order_status_screen.dart';
 import 'package:tb_patner/features/orders%20detailes/screen/order_detaile_screen.dart';
@@ -89,11 +92,25 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const AddProductScreen(),
       );
-
     case OrderStatusScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const OrderStatusScreen(),
+      );
+    case OrderProcessingScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const OrderProcessingScreen(),
+      );
+    case OrderOnTheWayScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const OrderOnTheWayScreen(),
+      );
+    case NewOrderScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const NewOrderScreen(),
       );
 
     // case MyAddressScreen.routeName:
