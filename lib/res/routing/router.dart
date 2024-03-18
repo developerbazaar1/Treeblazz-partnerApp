@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:tb_patner/features/auth/screen/signin_screen.dart';
-import 'package:tb_patner/features/auth/screen/signup_screen.dart';
-import 'package:tb_patner/features/edit%20profile/screen/edit_profile_screen.dart';
-import 'package:tb_patner/features/faq/screens/faq_screen.dart';
-import 'package:tb_patner/features/home/screens/home_screen.dart';
-import 'package:tb_patner/features/my%20finance/screens/my_finance_screen.dart';
-import 'package:tb_patner/features/notification/screen/notification_screen.dart';
-import 'package:tb_patner/features/order/screen/cancelled_order_screen.dart';
-import 'package:tb_patner/features/order/screen/delivered_order_screen.dart';
-import 'package:tb_patner/features/order/screen/new_order_screen.dart';
-import 'package:tb_patner/features/order/screen/order_on_the_way.dart';
-import 'package:tb_patner/features/order/screen/order_processing_screen.dart';
-import 'package:tb_patner/features/order/screen/ready_for_pickup_order_screen.dart';
-import 'package:tb_patner/features/order/widget/order_status_screen.dart';
-import 'package:tb_patner/features/orders%20detailes/screen/order_detaile_screen.dart';
-import 'package:tb_patner/features/password/screen/change_password_screen.dart';
-import 'package:tb_patner/features/privacy%20and%20policy/privacy_policy_screen.dart';
-import 'package:tb_patner/features/onboarding/screen/on_boarding_screen.dart';
-import 'package:tb_patner/features/products/screens/add_product_screen.dart';
-import 'package:tb_patner/features/products/screens/edit_product_price_quantity_screen.dart';
-import 'package:tb_patner/features/support/screens/support_screen.dart';
-import 'package:tb_patner/features/t&c/screens/terms_and_conditions_screen.dart';
+import 'package:tb_patner/features/dynamic/auth/view/screen/signin_screen.dart';
+import 'package:tb_patner/features/dynamic/auth/view/screen/signup_screen.dart';
+import 'package:tb_patner/features/dynamic/edit%20profile/screen/edit_profile_screen.dart';
+import 'package:tb_patner/features/static/faq/screens/faq_screen.dart';
+import 'package:tb_patner/features/dynamic/home/screens/home_screen.dart';
+import 'package:tb_patner/features/dynamic/my%20finance/screens/my_finance_screen.dart';
+import 'package:tb_patner/features/dynamic/notification/screen/notification_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/cancelled_order_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/delivered_order_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/new_order_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/order_on_the_way.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/order_processing_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/ready_for_pickup_order_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/widget/order_status_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/order_detaile_screen.dart';
+import 'package:tb_patner/features/dynamic/password/screen/change_password_screen.dart';
+import 'package:tb_patner/features/static/privacy%20and%20policy/privacy_policy_screen.dart';
+import 'package:tb_patner/features/static/onboarding/view/screen/on_boarding_screen.dart';
+import 'package:tb_patner/features/dynamic/product/view/screens/add_product_screen.dart';
+import 'package:tb_patner/features/dynamic/product/view/screens/edit_product_price_quantity_screen.dart';
+import 'package:tb_patner/features/dynamic/support/screens/support_screen.dart';
+import 'package:tb_patner/features/static/t&c/screens/terms_and_conditions_screen.dart';
 import 'package:tb_patner/res/comman/app_buttomBar.dart';
 
 import '../comman/my_text.dart';
@@ -37,10 +37,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const SignUpScreen(),
       );
-    case SplashScreen.routeName:
+    case OnboardingScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => const SplashScreen(),
+        builder: (_) => const OnboardingScreen(),
       );
     case HomeScreen.routeName:
       return MaterialPageRoute(

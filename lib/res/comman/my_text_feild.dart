@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tb_patner/res/comman/app_colors.dart';
+import 'package:tb_patner/res/constants/app_colors.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
 
 class MyTextFeild extends StatelessWidget {

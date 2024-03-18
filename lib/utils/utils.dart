@@ -1,15 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:tb_patner/res/comman/app_colors.dart';
-import 'package:tb_patner/res/comman/app_images.dart';
-import 'package:tb_patner/res/comman/app_text.dart';
+import 'package:tb_patner/res/constants/app_colors.dart';
+import 'package:tb_patner/res/constants/app_images.dart';
+import 'package:tb_patner/res/constants/app_text.dart';
 import 'package:tb_patner/res/comman/my_text.dart';
 import 'package:tb_patner/utils/enum.dart';
 
 import '../data/models/order.dart';
 import '../data/models/products.dart';
-import '../res/comman/appList.dart';
+import '../res/constants/appList.dart';
 
 class Utils {
   // Private constructor

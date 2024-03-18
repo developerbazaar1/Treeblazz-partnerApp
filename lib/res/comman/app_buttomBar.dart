@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:tb_patner/features/home/screens/home_screen.dart';
-import 'package:tb_patner/features/my%20finance/screens/my_finance_screen.dart';
-import 'package:tb_patner/features/products/screens/all_product_screen.dart';
-import 'package:tb_patner/features/order/screen/order_screen.dart';
-import 'package:tb_patner/features/user%20profile/screens/profile_screen.dart';
-import 'package:tb_patner/res/comman/app_colors.dart';
+import 'package:tb_patner/features/dynamic/home/screens/home_screen.dart';
+import 'package:tb_patner/features/dynamic/my%20finance/screens/my_finance_screen.dart';
+import 'package:tb_patner/features/dynamic/products/screens/all_product_screen.dart';
+import 'package:tb_patner/features/dynamic/order/screen/order_screen.dart';
+import 'package:tb_patner/features/dynamic/user%20profile/screens/profile_screen.dart';
+import 'package:tb_patner/res/constants/app_colors.dart';
 import 'package:tb_patner/utils/utils.dart';
 
 class AppBottomBar extends StatefulWidget {
