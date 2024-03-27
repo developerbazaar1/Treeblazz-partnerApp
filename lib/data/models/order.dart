@@ -2,20 +2,21 @@ import 'package:tb_patner/utils/enum.dart';
 
 import 'products.dart';
 
-class Order {
-  final String id;
-  final String price;
-  final String date;
-  final String time;
-  final String img;
+// class Order {
+//   final String id;
+//   final String price;
+//   final String date;
+//   final String time;
+//   final String img;
 
-  Order(
-      {required this.id,
-      required this.price,
-      required this.date,
-      required this.time,
-      required this.img});
-}
+//   Order({
+//     required this.id,
+//     required this.price,
+//     required this.date,
+//     required this.time,
+//     required this.img,
+//   });
+// }
 
 class Orders {
   final String id;

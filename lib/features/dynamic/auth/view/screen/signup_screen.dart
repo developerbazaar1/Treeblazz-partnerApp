@@ -153,7 +153,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SizedBox(height: height * 0.025),
               AddImageContainer(
-                text: "Uploade Store Images",
+                text: "Upload Store Images",
                 note: "Add multiple store images",
                 onTap: () {},
               ),

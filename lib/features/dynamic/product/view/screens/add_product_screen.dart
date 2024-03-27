@@ -119,7 +119,7 @@ class AddProductScreen extends StatelessWidget {
               SizedBox(height: height * 0.03),
               // Upload Thumbnail Image
               AddImageContainer(
-                text: "Uploade Thumbnail Images",
+                text: "Upload Thumbnail Images",
                 note: "Add a single product thumbnail",
                 onTap: () {},
               ),
@@ -127,7 +127,7 @@ class AddProductScreen extends StatelessWidget {
               SizedBox(height: height * 0.03),
               // Upload Product Images
               AddImageContainer(
-                text: "Uploade Product Images",
+                text: "Upload Product Images",
                 note: "Add multiple product images",
                 onTap: () {},
               ),

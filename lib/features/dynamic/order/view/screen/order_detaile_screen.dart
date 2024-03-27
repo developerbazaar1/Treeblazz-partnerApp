@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/data/models/order.dart';
-import 'package:tb_patner/features/dynamic/order/view/widget/order_status_screen.dart';
+import 'package:tb_patner/features/dynamic/order/view/screen/order_status_screen.dart';
 import 'package:tb_patner/features/dynamic/order/view/widget/order_billing_card_widget.dart';
 import 'package:tb_patner/features/dynamic/order/view/widget/order_detail_card_widget.dart';
 import 'package:tb_patner/features/dynamic/product/view/widgets/product_card.dart';

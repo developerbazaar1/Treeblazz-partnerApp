@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tb_patner/res/comman/app_snack_bar.dart';
-import 'package:tb_patner/res/comman/app_toast_bar.dart';
-import 'package:tb_patner/utils/extensions/extensions.dart';
 
 class AuthController extends GetxController {
   static AuthController get instance => Get.find();

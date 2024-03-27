@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tb_patner/features/dynamic/home/widgets/home_appbar.dart';
-import 'package:tb_patner/features/dynamic/home/widgets/home_dashboard_container_dart';
+import 'package:tb_patner/features/dynamic/home/widgets/home_dashboard_container.dart';
 import 'package:tb_patner/features/dynamic/order/controller/order_controller.dart';
 import 'package:tb_patner/res/constants/appList.dart';
 import 'package:tb_patner/res/constants/app_colors.dart';

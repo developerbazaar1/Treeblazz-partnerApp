@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:tb_patner/features/dynamic/product/controller/products_controller.dart';
 import 'package:tb_patner/data/models/products.dart';
-import 'package:tb_patner/features/dynamic/product/view/widgets/product_quantity_dropdown.dart';
+import 'package:tb_patner/features/dynamic/product/controller/products_controller.dart';
 import 'package:tb_patner/res/comman/app_toast_bar.dart';
 import 'package:tb_patner/res/comman/my_appbar.dart';
 import 'package:tb_patner/res/comman/my_redbutton.dart';
 import 'package:tb_patner/res/comman/my_text_feild.dart';
 
+import '../../../../../res/comman/my_text.dart';
 import '../../../../../res/constants/app_colors.dart';
 import '../../../../../res/constants/app_images.dart';
-import '../../../../../res/comman/my_text.dart';
 import '../../../notification/screen/notification_screen.dart';
 
 class EditProductPriceQuantityScreen extends StatelessWidget {

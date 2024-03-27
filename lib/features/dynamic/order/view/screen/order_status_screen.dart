@@ -5,7 +5,7 @@ import 'package:tb_patner/res/comman/my_text.dart';
 
 import '../../../../../../../../res/comman/my_redbutton.dart';
 import '../../../../../../../../utils/enum.dart';
-import '../../../../../../../../utils/order_tracker.dart';
+import '../../../../../res/helper/order_tracker.dart';
 
 class OrderStatusScreen extends StatelessWidget {
   final OrderStatus? orderStatus;

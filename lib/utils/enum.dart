@@ -1,15 +1,3 @@
-enum ProductCategory {
-  flower,
-  preroll,
-  bong,
-  pipe,
-  vap,
-  grinders,
-  cartridges,
-  edibles,
-  smoking,
-}
-
 enum ProductCategories {
   cannabis,
   vegitable,
@@ -29,5 +17,3 @@ enum OrderStatus {
   delivered,
   cancelled,
 }
-
-  // pickedUpByDriver,
